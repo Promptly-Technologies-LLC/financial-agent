@@ -21,9 +21,9 @@ from langgraph.prebuilt import ToolExecutor
 
 tool_executor = ToolExecutor(tools)
 
-from langchain_core.utils.function_calling import convert_to_openai_function
+from langchain.tools.render import format_tool_to_openai_function
 
-functions = [convert_to_openai_function(t) for t in tools]
+functions = [format_tool_to_openai_function(t) for t in tools]
 model = model.bind_functions(functions)
 
 from typing import TypedDict, Annotated, Sequence

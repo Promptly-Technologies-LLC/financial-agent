@@ -7,7 +7,7 @@ For a simple example of how this agent works, check out the colab notebook [here
 
 ## Deploy locally with Docker
 
-For safe, containerized local deployment, use Docker. First, install the appropriate version of [Docker](https://www.docker.com/) for your operating system.
+We highly recommend deploying this agent with Docker for easy install and secure containerization. First, install the appropriate version of [Docker](https://www.docker.com/) for your operating system.
 
 Next, open a terminal and build a Docker image from the remote repository:
 
@@ -15,10 +15,10 @@ Next, open a terminal and build a Docker image from the remote repository:
 docker build -t virattt-financial-agent https://github.com/virattt/financial-agent.git
 ```
 
-Then, run the Docker container:
+Then, run the Docker container, replacing `$OPENAI_API_KEY` and `$POLYGON_API_KEY` with your OpenAI and Polygon API keys:
 
 ```bash
-docker run -e OPENAI_API_KEY=$OPENAI_API_KEY -e POLYGON_API_KEY=$POLYGON_API_KEY -p 8080:8080 --name virattt-financial-agent virattt-financial-agent
+docker run -e OPENAI_API_KEY=$OPENAI_API_KEY -e POLYGON_API_KEY=$POLYGON_API_KEY -p 8080:8080 --name financial-agent -it virattt-financial-agent
 ```
 
 Navigate to `http://localhost:8080/agent/playground/` in your browser to interact with the agent.
@@ -26,7 +26,7 @@ Navigate to `http://localhost:8080/agent/playground/` in your browser to interac
 To stop the container, run:
 
 ```bash
-docker stop virattt-financial-agent
+docker stop financial-agent
 ```
 
 ## Local deployment without Docker
